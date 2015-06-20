@@ -17,7 +17,7 @@
     "mnist",
     "digits"
   ],
-  "author": "Juan Cazala <juancazala@gmail.com> (http://juancazala.com/)",
+  "author": "Juan Cazala <cazala@mail.sfsu.edu> (http://juancazala.com/)",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/cazala/mnist/issues"

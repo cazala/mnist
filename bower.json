@@ -3,7 +3,7 @@
   "version": "1.0.1",
   "homepage": "https://github.com/cazala/mnist",
   "authors": [
-    "Juan Cazala <cazala@mail.sfsu.edu>"
+    "Juan Cazala <cazala@mail.sfsu.edu> (http://juancazala.com/)"
   ],
   "description": "mnist digits",
   "main": "dist/mnist.js",
