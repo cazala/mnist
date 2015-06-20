@@ -3,7 +3,7 @@ MNIST Digits
 
 ![mnist digits](http://i.ytimg.com/vi/0QI3xgXuB-Q/hqdefault.jpg "MNIST Digits")
 
-The goal of this library is to provide an easy-to-use way for training and testing MNIST digits to neural networks (either in the browser or node.js). It includes [9926](https://www.youtube.com/watch?v=SiMHTK15Pik) different samples of mnist digits. I built this in order to work out of the box with [Synaptic](https://github.com/cazala/synaptic).
+The goal of this library is to provide an easy-to-use way for training and testing [MNIST digits](https://en.wikipedia.org/wiki/MNIST_database) to neural networks (either in the browser or node.js). It includes [9926](https://www.youtube.com/watch?v=SiMHTK15Pik) different samples of mnist digits. I built this in order to work out of the box with [Synaptic](https://github.com/cazala/synaptic).
 
 
 ### Installation
@@ -64,7 +64,7 @@ Returns the number of samples available for that digit
 mnist[6].length // 1009
 ```
 
-####.range(start, end)
+#####.range(start, end)
 
 Returns an array of samples, corresponding to the range specified between the `start` and `end` arguments
 
@@ -72,7 +72,7 @@ Returns an array of samples, corresponding to the range specified between the `s
 mnist[9].range(10, 17) // [ array with 7 samples of the digit 9 ]
 ```
 
-####.set(start, end)
+#####.set(start, end)
 
 Returns an dataset of samples, corresponding to the range specified between the `start` and `end` arguments, every element of the array has an `input` and `output` properties, beight `input` the normalized data of each image, and output a 10-length binary array representing which digit is in that image.
 
@@ -80,7 +80,7 @@ Returns an dataset of samples, corresponding to the range specified between the 
 mnist[4].set(200, 250) // [ dataset with 50 samples of the digit 4 ready for training/testing a neural network ]
 ```
 
-####.raw
+#####.raw
 
 This property provides access to all the raw data for all the samples of that digit
 
