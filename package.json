@@ -1,10 +1,10 @@
 {
   "name": "mnist",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "mnist digits",
   "main": "src/mnist.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "build": "browserify ./src/mnist.js > ./dist/mnist.js"
   },
   "devDependencies": {
     "browserify": "*"
@@ -15,8 +15,7 @@
   },
   "keywords": [
     "mnist",
-    "digits",
-    "database"
+    "digits"
   ],
   "author": "Juan Cazala <juancazala@gmail.com> (http://juancazala.com/)",
   "license": "MIT",

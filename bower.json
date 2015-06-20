@@ -1,0 +1,18 @@
+{
+  "name": "mnist",
+  "version": "1.0.1",
+  "homepage": "https://github.com/cazala/mnist",
+  "authors": [
+    "Juan Cazala <cazala@mail.sfsu.edu>"
+  ],
+  "description": "mnist digits",
+  "main": "dist/mnist.js",
+  "keywords": [
+    "mnist",
+    "digits"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "node_modules"
+  ]
+}
