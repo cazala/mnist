@@ -74,7 +74,7 @@ mnist[9].range(10, 17) // [ array with 7 samples of the digit 9 ]
 
 #####.set(start, end)
 
-Returns an dataset of samples, corresponding to the range specified between the `start` and `end` arguments, every element of the array has an `input` and `output` properties, beight `input` the normalized data of each image, and output a 10-length binary array representing which digit is in that image.
+Returns an dataset of samples, corresponding to the range specified between the `start` and `end` arguments, every element of the array has an `input` and `output` properties, being `input` the normalized data for all the pixels of each image, and output a 10-length binary array representing which digit is in that image.
 
 ```
 mnist[4].set(200, 250) // [ dataset with 50 samples of the digit 4 ready for training/testing a neural network ]
