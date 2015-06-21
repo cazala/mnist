@@ -30,7 +30,7 @@ var testSet = set.test;
 
 That would create a random training set of 8000 mnist digits, and a test set with other random 2000 mnist digits, and there are not going to be any sample in the training set repeated in the test set.
 
-Every set consist of an array of elements, which each of them will look like this:
+Every set consist of an array of elements, which each of them will looks like this:
 
 ```
 {
@@ -42,7 +42,7 @@ Every set consist of an array of elements, which each of them will look like thi
 
 ### Helpers
 
-Every digit has a set of helper funcitions which are listed below. To access these functions you have to target the desired digit like this: `mnist[digit]`.
+Every digit has a set of helper functions which are listed below. To access these functions you have to target the desired digit like this: `mnist[digit]`.
 
 So, for example, to get a single '5' digit, you would call `mnist[5].get()`.
 
