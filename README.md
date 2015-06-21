@@ -108,3 +108,7 @@ var digit = mnist[4].set(0, 100)[20].input; // extracting the digit from a datas
 var digit = mnist.set(8000, 2000).training[0].input; // extracting the digit from a training set
 var digit = mnist.set(8000, 2000).test[15].input; // extracting the digit from a test set
 ```
+
+### Contributing
+
+If you want to contribute feel free to submit PR's, just make sure to run `npm run build` to build the `/dist` files before submitting.
