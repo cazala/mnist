@@ -3,8 +3,9 @@ MNIST Digits
 
 ![mnist digits](http://i.ytimg.com/vi/0QI3xgXuB-Q/hqdefault.jpg "MNIST Digits")
 
-The goal of this library is to provide an easy-to-use way for training and testing [MNIST digits](https://en.wikipedia.org/wiki/MNIST_database) for neural networks (either in the browser or node.js). It includes [9926](https://www.youtube.com/watch?v=SiMHTK15Pik) different samples of mnist digits. I built this in order to work out of the box with [Synaptic](https://github.com/cazala/synaptic).
+The goal of this library is to provide an easy-to-use way for training and testing [MNIST digits](https://en.wikipedia.org/wiki/MNIST_database) for neural networks (either in the browser or node.js). It includes [10000](https://www.youtube.com/watch?v=SiMHTK15Pik) different samples of mnist digits. I built this in order to work out of the box with [Synaptic](https://github.com/cazala/synaptic).
 
+You are free to create any number (from 1 to 60 000) of different examples c via [MNIST Digits data loader](https://github.com/ApelSYN/mnist_dl)
 
 ### Installation
 
