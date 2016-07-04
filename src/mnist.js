@@ -101,11 +101,11 @@ var raw = [
 MNIST.get = function(count) {
   var range = [];
   for (var i in [0,1,2,3,4,5,6,7,8,9]) {
-     range.concat(this[i].set(0,this[i].length));
+     range = range.concat(this[i].set(0,this[i].length));
   }
   range = shuffle(range);
-  if (count) {
-    range = range.slice(0,count);
+  if (Number(count)) {
+    range = range.slice(0,Number(count));
   }
   return range;
 }
