@@ -101,9 +101,13 @@ var raw = [
 MNIST.get = function(count) {
   var range = [];
   for (var i in [0,1,2,3,4,5,6,7,8,9]) {
-     range.concat(mnist[i].set(0,mnist[i].length));
+     range.concat(this[i].set(0,this[i].length));
   }
-  return shuffle(range).slice(0,count);
+  range = shuffle(range);
+  if (count) {
+    range = range.slice(0,count);
+  }
+  return range;
 }
 
 
