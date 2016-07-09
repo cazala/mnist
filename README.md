@@ -15,7 +15,7 @@ for the browser: `bower install mnist --save`
 
 ### Usage
 
-The most important method is `mnist.set(trainingAmmt, testAmmt)` which takes the amount of samples for the training and test sets, and returns an object with the two sets of samples (one for training and the other one for testing). Both sets are shuffled, and there are no samples repeated in both sets.
+The most important method is `mnist.set(trainingAmount, testAmount)` which takes the amount of samples for the training and test sets, and returns an object with the two sets of samples (one for training and the other one for testing). Both sets are shuffled, and there are no samples repeated in both sets.
 
 For example:
 
