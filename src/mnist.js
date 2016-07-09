@@ -97,6 +97,19 @@ var raw = [
   MNIST.push(digit);
 });
 
+// Generates non-overlaping training and a test sets, with the desired ammount of samples
+MNIST.get = function(count) {
+  var range = [];
+  for (var i in [0,1,2,3,4,5,6,7,8,9]) {
+     range = range.concat(this[i].set(0,this[i].length));
+  }
+  range = shuffle(range);
+  if (Number(count)) {
+    range = range.slice(0,Number(count));
+  }
+  return range;
+}
+
 
 // Generates non-overlaping training and a test sets, with the desired ammount of samples
 MNIST.set = function(_training, _test)
