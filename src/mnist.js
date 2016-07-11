@@ -24,7 +24,7 @@ var raw = [
   var digit = {
     id: id
   };
-  
+
   // raw data
   digit.raw = raw[digit.id];
 
@@ -32,7 +32,7 @@ var raw = [
   digit.length = digit.raw.length / (size * size) | 0;
 
   // get one sample
-  digit.get = function(_which) 
+  digit.get = function(_which)
   {
     var which = _which;
     // if not specified, or if invalid, pick a random sample
@@ -44,10 +44,10 @@ var raw = [
     // generate sample
     var sample = [];
     for (
-      var length = size * size, 
-      start = which * length, 
-      i = 0; 
-      i < length; 
+      var length = size * size,
+      start = which * length,
+      i = 0;
+      i < length;
       sample.push(digit.raw[start + i++])
     );
     return sample;
@@ -68,8 +68,8 @@ var raw = [
     }
     var range = [];
     for (
-      var i = start; 
-      i <= end; 
+      var i = start;
+      i <= end;
       range.push(digit.get(i++))
     );
     return range;
@@ -83,8 +83,8 @@ var raw = [
     output[digit.id] = 1;
     var range = digit.range(start, end);
     for (
-      var i = 0; 
-      i < range.length; 
+      var i = 0;
+      i < range.length;
       set.push({
         input: range[i++],
         output: output
@@ -131,7 +131,7 @@ MNIST.set = function(_training, _test)
       test = MNIST.__MINLENGTH * (test / training);
       training = MNIST.__MINLENGTH - training;
     }
-    else 
+    else
     {
       training = MNIST.__MINLENGTH * (training / test);
       test = MNIST.__MINLENGTH - test;
@@ -164,8 +164,9 @@ MNIST.draw = function(digit, context, offsetX, offsetY)
     imageData.data[i * 4] = digit[i] * 255;
     imageData.data[i * 4 + 1] = digit[i] * 255;
     imageData.data[i * 4 + 2] = digit[i] * 255;
+    imageData.data[i * 4 + 3] = 255;
   }
-  context.putImageData(imageData,offsetX,offsetY);
+  context.putImageData(imageData, offsetX || 0, offsetY || 0);
 }
 
 
@@ -185,13 +186,13 @@ if (typeof module !== 'undefined' && module.exports)
 if (typeof window == 'object')
 {
   (function()
-  { 
+  {
     var old = window['mnist'];
     MNIST.ninja = function()
-    { 
-      window['mnist'] = old; 
+    {
+      window['mnist'] = old;
       return MNIST;
-    };	
+    };
   })();
 
   window['mnist'] = MNIST;
