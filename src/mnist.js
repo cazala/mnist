@@ -18,8 +18,7 @@ var raw = [
   require('./digits/9.json').data
 ];
 
-[0,1,2,3,4,5,6,7,8,9].forEach(function(id)
-{
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9].forEach(function (id) {
   // mnist digit
   var digit = {
     id: id
@@ -32,12 +31,10 @@ var raw = [
   digit.length = digit.raw.length / (size * size) | 0;
 
   // get one sample
-  digit.get = function(_which)
-  {
+  digit.get = function (_which) {
     var which = _which;
     // if not specified, or if invalid, pick a random sample
-    if ('undefined' == typeof which || which > digit.length || which < 0)
-    {
+    if ('undefined' == typeof which || which > digit.length || which < 0) {
       which = Math.random() * digit.length | 0;
     }
 
@@ -54,14 +51,12 @@ var raw = [
   }
 
   // get a range of samples
-  digit.range = function(start, end)
-  {
+  digit.range = function (start, end) {
     if (start < 0)
       start = 0;
     if (end >= digit.length)
       end = digit.length - 1;
-    if (start > end)
-    {
+    if (start > end) {
       var tmp = start;
       start = end;
       end = tmp;
@@ -76,10 +71,9 @@ var raw = [
   }
 
   // get set of digits, ready to be used for training or testing
-  digit.set = function(start, end)
-  {
+  digit.set = function (start, end) {
     var set = [];
-    var output = [0,0,0,0,0,0,0,0,0,0];
+    var output = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0];
     output[digit.id] = 1;
     var range = digit.range(start, end);
     for (
@@ -98,22 +92,21 @@ var raw = [
 });
 
 // Generates non-overlaping training and a test sets, with the desired ammount of samples
-MNIST.get = function(count) {
+MNIST.get = function (count) {
   var range = [];
-  for (var i in [0,1,2,3,4,5,6,7,8,9]) {
-     range = range.concat(this[i].set(0,this[i].length));
+  for (var i in [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]) {
+    range = range.concat(this[i].set(0, this[i].length));
   }
   range = shuffle(range);
   if (Number(count)) {
-    range = range.slice(0,Number(count));
+    range = range.slice(0, Number(count));
   }
   return range;
 }
 
 
 // Generates non-overlaping training and a test sets, with the desired ammount of samples
-MNIST.set = function(_training, _test)
-{
+MNIST.set = function (_training, _test) {
   var training = _training / 10 | 0;
   var test = _test / 10 | 0;
 
@@ -123,16 +116,13 @@ MNIST.set = function(_training, _test)
     test = 1;
 
   // check that there are enough samples to make the sets, and change the ammounts if they are too big
-  if (training + test + 1 > MNIST.__MINLENGTH)
-  {
+  if (training + test + 1 > MNIST.__MINLENGTH) {
     console.warn('There are not enough samples to make a training set of ' + training + ' elements and a test set of ' + test + ' elements.');
-    if (training > test)
-    {
+    if (training > test) {
       test = MNIST.__MINLENGTH * (test / training);
       training = MNIST.__MINLENGTH - training;
     }
-    else
-    {
+    else {
       training = MNIST.__MINLENGTH * (training / test);
       test = MNIST.__MINLENGTH - test;
     }
@@ -142,8 +132,7 @@ MNIST.set = function(_training, _test)
   var trainingSet = [];
   var testSet = [];
 
-  for (var i = 0; i < 10; i++)
-  {
+  for (var i = 0; i < 10; i++) {
     trainingSet = trainingSet.concat(MNIST[i].set(0, training - 1));
     testSet = testSet.concat(MNIST[i].set(training, training + test - 1));
   }
@@ -156,11 +145,9 @@ MNIST.set = function(_training, _test)
 }
 
 // draws a given digit in a canvas context
-MNIST.draw = function(digit, context, offsetX, offsetY)
-{
+MNIST.draw = function (digit, context, offsetX, offsetY) {
   var imageData = context.getImageData(offsetX || 0, offsetY || 0, size, size);
-  for (var i = 0; i < digit.length; i++)
-  {
+  for (var i = 0; i < digit.length; i++) {
     imageData.data[i * 4] = digit[i] * 255;
     imageData.data[i * 4 + 1] = digit[i] * 255;
     imageData.data[i * 4 + 2] = digit[i] * 255;
@@ -169,27 +156,26 @@ MNIST.draw = function(digit, context, offsetX, offsetY)
   context.putImageData(imageData, offsetX || 0, offsetY || 0);
 }
 
+// takes an array of 10 digits representing a number from 0 to 9 (ie. any output in a dataset) and returns the actual number
+MNIST.toNumber = function (array) {
+  return array.indexOf(Math.max.apply(Math, array));
+}
 
 // CommonJS & AMD
-if (typeof define !== 'undefined' && define.amd)
-{
-  define([], function(){ return MNIST });
+if (typeof define !== 'undefined' && define.amd) {
+  define([], function () { return MNIST });
 }
 
 // Node.js
-if (typeof module !== 'undefined' && module.exports)
-{
+if (typeof module !== 'undefined' && module.exports) {
   module.exports = MNIST;
 }
 
 // Browser
-if (typeof window == 'object')
-{
-  (function()
-  {
+if (typeof window == 'object') {
+  (function () {
     var old = window['mnist'];
-    MNIST.ninja = function()
-    {
+    MNIST.ninja = function () {
       window['mnist'] = old;
       return MNIST;
     };
@@ -201,7 +187,7 @@ if (typeof window == 'object')
 //+ Jonas Raoni Soares Silva
 //@ http://jsfromhell.com/array/shuffle [rev. #1]
 
-function shuffle(v){
-    for(var j, x, i = v.length; i; j = parseInt(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x);
-    return v;
+function shuffle(v) {
+  for (var j, x, i = v.length; i; j = parseInt(Math.random() * i), x = v[--i], v[i] = v[j], v[j] = x);
+  return v;
 };
