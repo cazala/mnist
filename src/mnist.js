@@ -156,6 +156,30 @@ MNIST.draw = function (digit, context, offsetX, offsetY) {
   context.putImageData(imageData, offsetX || 0, offsetY || 0);
 }
 
+// returns an ASCII representation of a digit received as parameter
+// it uses ASCII extended characters 176, 177 and 178 to represent different shades of gray
+// digit must be an array of 784 real numbers between 0 and 1
+MNIST.toASCIIString = function (digit) {
+  var mnistString = '';
+  for (var i = 0; i < digit.length; i++) {
+    var pixel = digit[i];
+
+    if (pixel === 0) {
+      pixel = ' ';
+    } else if (pixel > 0 && pixel < 0.333) {
+      pixel = '\u2591';
+    } else if (pixel >= 0.333 && pixel < 0.666) {
+      pixel = '\u2592';
+    } else {
+      pixel = '\u2593';
+    }
+
+    mnistString = mnistString + (i % 28 ? '' : '\n') + pixel;
+  }
+  
+  return mnistString;
+}
+
 // takes an array of 10 digits representing a number from 0 to 9 (ie. any output in a dataset) and returns the actual number
 MNIST.toNumber = function (array) {
   return array.indexOf(Math.max.apply(Math, array));
