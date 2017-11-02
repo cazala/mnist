@@ -5,7 +5,7 @@ MNIST Digits
 
 The goal of this library is to provide an easy-to-use way for training and testing [MNIST digits](https://en.wikipedia.org/wiki/MNIST_database) for neural networks (either in the browser or node.js). It includes [10000](https://www.youtube.com/watch?v=SiMHTK15Pik) different samples of mnist digits. I built this in order to work out of the box with [Synaptic](https://github.com/cazala/synaptic).
 
-You are free to create any number (from 1 to 60 000) of different examples c via [MNIST Digits data loader](https://github.com/ApelSYN/mnist_dl)
+You are free to create any number (from 1 to 60 000) of different examples via the [MNIST Digits data loader](https://github.com/ApelSYN/mnist_dl)
 
 ### Installation
 
@@ -20,12 +20,9 @@ The most important method is `mnist.set(trainingAmount, testAmount)` which takes
 For example:
 
 ```
-var mnist = require('mnist'); // this line is not needed in the browser
+const mnist = require('mnist'); // this line is not needed in the browser
 
-var set = mnist.set(8000, 2000);
-
-var trainingSet = set.training;
-var testSet = set.test;
+const { training, test } = mnist.set(8000, 2000);
 
 ```
 
@@ -49,7 +46,7 @@ So, for example, to get a single '5' digit, you would call `mnist[5].get()`.
 
 These are all the helper function:
 
-#####.get([index])
+##### .get([index])
 
 Returns a single sample of that digit, given its index. If no index is provided, a random sample is returned.
 
@@ -57,7 +54,7 @@ Returns a single sample of that digit, given its index. If no index is provided,
 mnist[0].get(100) // [0,0,0,1,1...,0,0]
 ```
 
-#####.length
+##### .length
 
 Returns the number of samples available for that digit
 
@@ -65,7 +62,7 @@ Returns the number of samples available for that digit
 mnist[6].length // 1009
 ```
 
-#####.range(start, end)
+##### .range(start, end)
 
 Returns an array of samples, corresponding to the range specified between the `start` and `end` arguments
 
@@ -73,7 +70,7 @@ Returns an array of samples, corresponding to the range specified between the `s
 mnist[9].range(10, 17) // [ array with 7 samples of the digit 9 ]
 ```
 
-#####.set(start, end)
+##### .set(start, end)
 
 Returns an dataset of samples, corresponding to the range specified between the `start` and `end` arguments, every element of the array has an `input` and `output` properties, being `input` the normalized data for all the pixels of each image, and output a 10-length binary array representing which digit is in that image.
 
@@ -81,7 +78,7 @@ Returns an dataset of samples, corresponding to the range specified between the 
 mnist[4].set(200, 250) // [ dataset with 50 samples of the digit 4 ready for training/testing a neural network ]
 ```
 
-#####.raw
+##### .raw
 
 This property provides access to all the raw data for all the samples of that digit
 
@@ -94,8 +91,8 @@ mnist[3].raw // all the raw data for digit 3
 This lets you draw a given digit in a canvas context: `mnist.draw(digit, context [,offsetX, offsetY])`
 
 ```
-var digit = mnist[1].get();
-var context = document.getElementById('myCanvas').getContext('2d');
+const digit = mnist[1].get();
+const context = document.getElementById('myCanvas').getContext('2d');
 
 mnist.draw(digit, context); // draws a '1' mnist digit in the canvas
 ```
@@ -103,11 +100,11 @@ mnist.draw(digit, context); // draws a '1' mnist digit in the canvas
 The digit provided has to be a 784-length array of normalized values (0-1). All of the following approaches will work:
 
 ```
-var digit = mnist[0].get(); // single digit
-var digit = mnist[1].range(0, 100)[50]; // extracting the digit from a range
-var digit = mnist[4].set(0, 100)[20].input; // extracting the digit from a dataset
-var digit = mnist.set(8000, 2000).training[0].input; // extracting the digit from a training set
-var digit = mnist.set(8000, 2000).test[15].input; // extracting the digit from a test set
+const digit = mnist[0].get(); // single digit
+const digit = mnist[1].range(0, 100)[50]; // extracting the digit from a range
+const digit = mnist[4].set(0, 100)[20].input; // extracting the digit from a dataset
+const digit = mnist.set(8000, 2000).training[0].input; // extracting the digit from a training set
+const digit = mnist.set(8000, 2000).test[15].input; // extracting the digit from a test set
 ```
 
 ### Contributing
