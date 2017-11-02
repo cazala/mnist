@@ -20,12 +20,9 @@ The most important method is `mnist.set(trainingAmount, testAmount)` which takes
 For example:
 
 ```
-var mnist = require('mnist'); // this line is not needed in the browser
+const mnist = require('mnist'); // this line is not needed in the browser
 
-var set = mnist.set(8000, 2000);
-
-var trainingSet = set.training;
-var testSet = set.test;
+const { training, test } = mnist.set(8000, 2000);
 
 ```
 
@@ -94,8 +91,8 @@ mnist[3].raw // all the raw data for digit 3
 This lets you draw a given digit in a canvas context: `mnist.draw(digit, context [,offsetX, offsetY])`
 
 ```
-var digit = mnist[1].get();
-var context = document.getElementById('myCanvas').getContext('2d');
+const digit = mnist[1].get();
+const context = document.getElementById('myCanvas').getContext('2d');
 
 mnist.draw(digit, context); // draws a '1' mnist digit in the canvas
 ```
@@ -103,11 +100,11 @@ mnist.draw(digit, context); // draws a '1' mnist digit in the canvas
 The digit provided has to be a 784-length array of normalized values (0-1). All of the following approaches will work:
 
 ```
-var digit = mnist[0].get(); // single digit
-var digit = mnist[1].range(0, 100)[50]; // extracting the digit from a range
-var digit = mnist[4].set(0, 100)[20].input; // extracting the digit from a dataset
-var digit = mnist.set(8000, 2000).training[0].input; // extracting the digit from a training set
-var digit = mnist.set(8000, 2000).test[15].input; // extracting the digit from a test set
+const digit = mnist[0].get(); // single digit
+const digit = mnist[1].range(0, 100)[50]; // extracting the digit from a range
+const digit = mnist[4].set(0, 100)[20].input; // extracting the digit from a dataset
+const digit = mnist.set(8000, 2000).training[0].input; // extracting the digit from a training set
+const digit = mnist.set(8000, 2000).test[15].input; // extracting the digit from a test set
 ```
 
 ### Contributing
