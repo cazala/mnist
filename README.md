@@ -5,7 +5,7 @@ MNIST Digits
 
 The goal of this library is to provide an easy-to-use way for training and testing [MNIST digits](https://en.wikipedia.org/wiki/MNIST_database) for neural networks (either in the browser or node.js). It includes [10000](https://www.youtube.com/watch?v=SiMHTK15Pik) different samples of mnist digits. I built this in order to work out of the box with [Synaptic](https://github.com/cazala/synaptic).
 
-You are free to create any number (from 1 to 60 000) of different examples c via [MNIST Digits data loader](https://github.com/ApelSYN/mnist_dl)
+You are free to create any number (from 1 to 60 000) of different examples via the [MNIST Digits data loader](https://github.com/ApelSYN/mnist_dl)
 
 ### Installation
 
@@ -49,7 +49,7 @@ So, for example, to get a single '5' digit, you would call `mnist[5].get()`.
 
 These are all the helper function:
 
-#####.get([index])
+##### .get([index])
 
 Returns a single sample of that digit, given its index. If no index is provided, a random sample is returned.
 
@@ -57,7 +57,7 @@ Returns a single sample of that digit, given its index. If no index is provided,
 mnist[0].get(100) // [0,0,0,1,1...,0,0]
 ```
 
-#####.length
+##### .length
 
 Returns the number of samples available for that digit
 
@@ -65,7 +65,7 @@ Returns the number of samples available for that digit
 mnist[6].length // 1009
 ```
 
-#####.range(start, end)
+##### .range(start, end)
 
 Returns an array of samples, corresponding to the range specified between the `start` and `end` arguments
 
@@ -73,7 +73,7 @@ Returns an array of samples, corresponding to the range specified between the `s
 mnist[9].range(10, 17) // [ array with 7 samples of the digit 9 ]
 ```
 
-#####.set(start, end)
+##### .set(start, end)
 
 Returns an dataset of samples, corresponding to the range specified between the `start` and `end` arguments, every element of the array has an `input` and `output` properties, being `input` the normalized data for all the pixels of each image, and output a 10-length binary array representing which digit is in that image.
 
@@ -81,7 +81,7 @@ Returns an dataset of samples, corresponding to the range specified between the 
 mnist[4].set(200, 250) // [ dataset with 50 samples of the digit 4 ready for training/testing a neural network ]
 ```
 
-#####.raw
+##### .raw
 
 This property provides access to all the raw data for all the samples of that digit
 
