@@ -22,5 +22,8 @@
   "bugs": {
     "url": "https://github.com/cazala/mnist/issues"
   },
-  "homepage": "https://github.com/cazala/mnist"
+  "homepage": "https://github.com/cazala/mnist",
+  "dependencies": {
+    "mnist": "^1.1.0"
+  }
 }
